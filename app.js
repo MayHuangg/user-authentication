@@ -15,6 +15,10 @@ require('./config/mongoose')
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs'}))
 app.set('view engine', 'hbs')
 
+// 使靜態檔案得以使用 
+app.use(express.static('public'))
+
+// routing for index page 
 app.get('/', (req, res) => {
   res.render('index')
 })
