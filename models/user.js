@@ -6,7 +6,7 @@ const userSchema = Schema(
       type: String,
       require: true
     },
-    email:{
+    email: {
       type: String,
       require: true
     },
@@ -17,4 +17,4 @@ const userSchema = Schema(
   }
 )
 
-module.exports = mongoose.model('user',userSchema)
+module.exports = mongoose.model('user', userSchema)
