@@ -29,18 +29,19 @@ app.get('/', (req, res) => {
 })
 
 // routing for authentication 
-app.post('/login', (req, res) => {
+app.post('/', (req, res) => {
   const email = req.body.email
   const password = req.body.password
+  let massage = ''
   User.find({ email,password })
     .lean()
     .then(data => {
       if (!data[0]){
-        console.log('wrong')
-        const errorMassage = 'Email或Password錯誤'
-        res.render('index',{ errorMassage })
+        massage = 'Email或Password錯誤'
+        res.render('index',{ massage })
       } else {
-        res.send('welcome')
+        const firstName = data[0].firstName
+        res.render('welcome',{ firstName })
       }
     })
 })
